@@ -2,9 +2,12 @@ package com.example.android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
+import com.example.android.activity.LoginActivity;
 import com.example.android.adapters.ThemeAdapter;
 import com.example.android.classes.Theme;
 
@@ -37,5 +40,9 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add(new Theme(16, "HTML CSS","65757657657"));
         adapter = new ThemeAdapter(this, arrayList);
         listView.setAdapter(adapter);
+    }
+
+    public void onLogin(View view) {
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 }
