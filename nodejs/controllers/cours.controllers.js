@@ -1,0 +1,1 @@
+const Cours = require("../models/cours.model");
