@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const moment = require('moment');
-const routes = require('./routes');
 
 const app = express();
 global.__basedir = __dirname;
@@ -28,7 +27,6 @@ function use_routes(routes){
     });
 }
   
-use_routes(routes);
 app.get('/', function (req, res){
     res.json({message: 'Welcome to edukids'});
 });

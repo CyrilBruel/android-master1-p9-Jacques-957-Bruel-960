@@ -13,7 +13,7 @@ const User = function(user) {
 };
 
 User.create = (newUser, result) => {
-  var requete = "INSERT INTO user (nom, prenom, age, sexe, username, mot_de_passe, profil) values ('"+newUser.nom+"', '"+newUser.prenom+"', '"+newUser.age+"', '"+newUser.sexe+"', '"+newUser.username+"', '"+newUser.mot_de_passe+"', '"+newUser.profil+"')"
+  var requete = "INSERT INTO educ_user (nom, prenom, age, sexe, username, mot_de_passe, profil) values ('"+newUser.nom+"', '"+newUser.prenom+"', '"+newUser.age+"', '"+newUser.sexe+"', '"+newUser.username+"', '"+newUser.mot_de_passe+"', '"+newUser.profil+"')"
   sql.query(requete, (err, res) => {
     if (err) {
       console.log("error: ", err);

@@ -1,12 +1,11 @@
 const User = require("../models/user.model.js");
-const UserOffre = require("../models/user_offre.model.js");
 
 const crypto = require('crypto')
 
 
 
 // Create and Save a new User
-exports.create = (req, res) => {
+exports.inscription = (req, res) => {
   
   // 
   const str = req.body.mot_de_passe
@@ -43,16 +42,8 @@ exports.create = (req, res) => {
           err.message || "Quelques erreurs renvontrées pendant la creation de l'utilisateur."
       });
     else{
-       UserOffre.create({
-        id_user: data.id,
-        volume: 0,
-        duree: 0,
-        date_achat: 0
-      }, (err, data) => {
-    
-      });
       res.status(200).send({'data':data,status:200});
-    } 
+    }
   });
 };
 
