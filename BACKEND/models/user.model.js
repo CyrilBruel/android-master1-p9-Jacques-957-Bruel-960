@@ -37,7 +37,7 @@ User.create = (newUser, result) => {
 };
 
 User.findById = (id, result) => {
-  sql.query(`SELECT * FROM user WHERE id = ${id}`, (err, res) => {
+  sql.query(`SELECT * FROM educ_user WHERE id = ${id}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -56,7 +56,7 @@ User.findById = (id, result) => {
 };
 
 User.getAll = (title, result) => {
-  let query = "SELECT * FROM user";
+  let query = "SELECT * FROM educ_user";
 
   if (title) {
     query += ` WHERE title LIKE '%${title}%'`;
@@ -90,7 +90,7 @@ User.getAllActive = result => {
 
 User.updateById = (id, user, result) => {
   sql.query(
-    "UPDATE user SET username = ?, password = ? WHERE id = ?",
+    "UPDATE educ_user SET username = ?, password = ? WHERE id = ?",
     [ user.username, user.password, id],
     (err, res) => {
       if (err) {
@@ -105,14 +105,14 @@ User.updateById = (id, user, result) => {
         return;
       }
 
-      console.log("updated user: ", { id: id, ...user });
+      console.log("updated educ_user: ", { id: id, ...user });
       result(null, { id: id, ...user });
     }
   );
 };
 
 User.remove = (id, result) => {
-  sql.query("DELETE FROM user WHERE id = ?", id, (err, res) => {
+  sql.query("DELETE FROM educ_user WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -125,13 +125,13 @@ User.remove = (id, result) => {
       return;
     }
 
-    console.log("deleted user with id: ", id);
+    console.log("deleted educ_user with id: ", id);
     result(null, res);
   });
 };
 
 User.removeAll = result => {
-  sql.query("DELETE FROM user", (err, res) => {
+  sql.query("DELETE FROM educ_user", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -177,7 +177,7 @@ User.removeAll = result => {
 // };
 
 User.findByLoginPassword = (username, mot_de_passe, result) => {
-  sql.query(`SELECT * FROM user WHERE username = '${username}' and mot_de_passe = '${mot_de_passe}'`, (err, res) => {
+  sql.query(`SELECT * FROM educ_user WHERE username = '${username}' and mot_de_passe = '${mot_de_passe}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
