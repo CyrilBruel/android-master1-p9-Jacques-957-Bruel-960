@@ -1,19 +1,19 @@
 package com.example.android.classes;
 
 public class Theme {
-    private int serialNum;
+    private int id;
     private String val;
     private String desce;
     public Theme(int num, String val, String desce) {
-        this.serialNum = num;
+        this.id = num;
         this.val = val;
         this.desce = desce;
     }
-    public int getNum() {
-        return serialNum;
+    public int getId() {
+        return id;
     }
-    public void setNum(int num) {
-        this.serialNum = num;
+    public void setId(int num) {
+        this.id = num;
     }
     public String getVal() {
         return val;
