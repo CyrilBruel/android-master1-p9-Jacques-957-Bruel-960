@@ -30,7 +30,7 @@ User.create = (newUser, result) => {
       age : newUser.age,
       sexe : newUser.sexe,
       username : newUser.username,
-      mot_de_passe : newUser.mot_de_passe,
+      // mot_de_passe : newUser.mot_de_passe,
       profil : newUser.profil
     });
   });
