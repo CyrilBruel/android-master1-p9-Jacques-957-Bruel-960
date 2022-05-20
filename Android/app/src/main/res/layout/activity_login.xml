@@ -7,8 +7,8 @@
     tools:context=".activity.LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="325dp"
-        android:layout_height="wrap_content"
+        android:layout_width="370dp"
+        android:layout_height="402dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -16,34 +16,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/inscriptionNom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pseudo"
-            app:layout_constraintBottom_toTopOf="@+id/prenom"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <EditText
-            android:id="@+id/incriptionNom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text=""
-            app:layout_constraintBaseline_toBaselineOf="@+id/inscriptionNom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/prenom" />
-
-        <TextView
             android:id="@+id/prenom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:text="Mot de passe"
-            app:layout_constraintStart_toStartOf="@+id/inscriptionNom"
-            app:layout_constraintTop_toBottomOf="@+id/inscriptionNom" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/editTextTextPassword2" />
 
         <EditText
             android:id="@+id/editTextTextPassword2"
@@ -51,11 +28,11 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
-            app:layout_constraintBaseline_toBaselineOf="@+id/prenom"
-            app:layout_constraintStart_toStartOf="@+id/incriptionNom" />
+            tools:layout_editor_absoluteX="123dp"
+            tools:layout_editor_absoluteY="66dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/inscriptionSeConnecter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -74,6 +51,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/inscriptionSeConnecter" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,9 +6,9 @@ const crypto = require('crypto')
 
 // Create and Save a new User
 exports.inscription = (req, res) => {
-  
+  console.log(req.body);
   // 
-  const str = req.body.mot_de_passe
+  const str = JSON.stringify(req.body.mot_de_passe); 
   const hash = crypto.createHash('sha1').update(str).digest('hex')
   console.log("hash === ", hash)
   // 

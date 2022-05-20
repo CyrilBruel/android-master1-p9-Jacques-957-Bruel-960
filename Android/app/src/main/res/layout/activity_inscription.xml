@@ -27,7 +27,7 @@
             tools:ignore="MissingConstraints" />
 
         <EditText
-            android:id="@+id/incriptionNom"
+            android:id="@+id/inscriptionNom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -39,14 +39,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/inscriptionSeConnecter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Se connecter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/inscriptionPassword" />
 
         <TextView
             android:id="@+id/textView4"
@@ -54,18 +54,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="Prénoms"
-            app:layout_constraintBaseline_toBaselineOf="@+id/incriptionPrenom"
+            app:layout_constraintBaseline_toBaselineOf="@+id/inscriptionPrenom"
             app:layout_constraintStart_toStartOf="@+id/textView2" />
 
         <EditText
-            android:id="@+id/incriptionPrenom"
+            android:id="@+id/inscriptionPrenom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="@+id/incriptionNom"
-            app:layout_constraintTop_toBottomOf="@+id/incriptionNom" />
+            app:layout_constraintStart_toStartOf="@+id/inscriptionNom"
+            app:layout_constraintTop_toBottomOf="@+id/inscriptionNom" />
 
         <EditText
             android:id="@+id/inscriptionPseudo"
@@ -74,8 +74,8 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="@+id/incriptionPrenom"
-            app:layout_constraintTop_toBottomOf="@+id/incriptionPrenom" />
+            app:layout_constraintStart_toStartOf="@+id/inscriptionPrenom"
+            app:layout_constraintTop_toBottomOf="@+id/inscriptionPrenom" />
 
         <TextView
             android:id="@+id/textView3"
@@ -130,7 +130,7 @@
             app:layout_constraintStart_toStartOf="@+id/textView5" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/inscriptionPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -144,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mot de passe"
-            app:layout_constraintBaseline_toBaselineOf="@+id/editTextTextPassword"
+            app:layout_constraintBaseline_toBaselineOf="@+id/inscriptionPassword"
             app:layout_constraintStart_toStartOf="@+id/textView6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
