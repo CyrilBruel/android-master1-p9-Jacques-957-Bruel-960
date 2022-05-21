@@ -6,8 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.android.R;
+import com.example.android.classes.ResInscription;
+import com.example.android.classes.User;
+import com.example.android.config.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -21,6 +31,34 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, InscriptionActivity.class);
                 startActivity(intent);
+            }
+        });
+        Button seConnecter = findViewById(R.id.loginSeConnecter);
+        seConnecter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onLogin();
+            }
+        });
+    }
+    public void onLogin(){
+        User user = new User();
+        EditText motdepasse = findViewById(R.id.loginMotDePasse);
+        EditText pseudo = findViewById(R.id.loginPseudo);
+        user.setMotdepasse(motdepasse.getText().toString());
+        user.setPseudo(pseudo.getText().toString());
+
+        Call<ResInscription> call = RetrofitClient.getInstance().getMyApi().inscription(user);
+        call.enqueue(new Callback<ResInscription>() {
+            @Override
+            public void onResponse(Call<ResInscription> call, Response<ResInscription> response) {
+                ResInscription myheroList = response.body();
+                Toast.makeText(getApplicationContext(), "Success"+myheroList.getStatus(), Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onFailure(Call<ResInscription> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(getApplicationContext(), "An error has occured", Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -31,20 +31,10 @@ create table educ_cours(
     constraint educ_cours_categ_fk foreign key (idcategorie) references educ_categorie(id)
 );
 
-create table educ_typecoursfille(
+create table educ_cours_fille(
     id integer not null,
     desce varchar(200),
-    constraint educ_typecoursfille_pk primary key (id)
-);
-
-create table educ_coursfille(
-    id integer not null,
-    desce varchar(200),
-    idtypecoursfille integer not null,
     content text,
-    link varchar(500),
-    picture varchar(500),
-    rang integer not null,
     idcours integer not null,
     constraint educ_coursfille_pk primary key (id),
     constraint educ_coursfilletype_fk foreign key (idtypecoursfille) references educ_typecoursfille(id)

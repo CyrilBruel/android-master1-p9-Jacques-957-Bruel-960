@@ -14,4 +14,6 @@ public interface Api {
     String BASE_URL = "http://192.168.88.35:3000/";
     @POST("api/user")
     Call<ResInscription> inscription(@Body User dataModal);
+    @POST("api/user/login")
+    Call<ResInscription> login(@Body User dataModal);
 }

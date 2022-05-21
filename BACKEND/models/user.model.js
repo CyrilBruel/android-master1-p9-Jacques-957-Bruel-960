@@ -143,39 +143,6 @@ User.removeAll = result => {
   });
 };
 
-// User.inscription = (newUser, result) => {
-//   sql.query("INSERT INTO user SET ?", newUser, (err, res) => {
-//     if (err) {
-//       console.log("error: ", err);
-//       result(err, null);
-//       return;
-//     }
-
-//     console.log("created user: ", { id: res.insertId, ...newUser });
-    
-//     //result(null, { id: res.insertId, ...newUser });
-//     return this.login(newUser.username, newUser.password, result);
-//   });
-// };
-
-// User.saveToken = (user, result) => {
-//   var token = sha1(
-//     user.id +
-//     user.password +
-//     moment().format("YYYY-MM-DD HH:mm:ss.SSS")
-//   );
-
-//   var requete = "INSERT INTO TOKEN (id_user, token, expiration) VALUES ('"+user.id+"', '"+token+"', '"+moment().add(1, "h").format("YYYY-MM-DD HH:mm:ss.SSS")+"') ";
-//   sql.query(requete, (err, res) => {
-//     if (err) {
-//       console.log("error: ", err);
-//       result(err, null);
-//       return;
-//     }
-//     result(null, token);
-//   });
-// };
-
 User.findByLoginPassword = (username, mot_de_passe, result) => {
   sql.query(`SELECT * FROM educ_user WHERE username = '${username}' and mot_de_passe = '${mot_de_passe}'`, (err, res) => {
     if (err) {

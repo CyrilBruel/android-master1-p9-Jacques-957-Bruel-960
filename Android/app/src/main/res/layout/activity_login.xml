@@ -20,27 +20,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mot de passe"
-            app:layout_constraintBaseline_toBaselineOf="@+id/editTextTextPassword2" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/loginMotDePasse"
+            app:layout_constraintEnd_toStartOf="@+id/loginMotDePasse"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTextPassword2"
+            android:id="@+id/loginMotDePasse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:ems="10"
             android:inputType="textPassword"
-            tools:layout_editor_absoluteX="123dp"
-            tools:layout_editor_absoluteY="66dp" />
+            app:layout_constraintStart_toStartOf="@+id/loginPseudo"
+            app:layout_constraintTop_toBottomOf="@+id/loginPseudo" />
 
         <Button
-            android:id="@+id/inscriptionSeConnecter"
+            android:id="@+id/loginSeConnecter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="Button"
+            android:text="Se connecter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+            app:layout_constraintTop_toBottomOf="@+id/loginMotDePasse" />
 
         <Button
             android:id="@+id/loginInscription"
@@ -51,6 +55,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inscriptionSeConnecter" />
+            app:layout_constraintTop_toBottomOf="@+id/loginSeConnecter" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pseudo"
+            app:layout_constraintEnd_toStartOf="@+id/loginPseudo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/loginPseudo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

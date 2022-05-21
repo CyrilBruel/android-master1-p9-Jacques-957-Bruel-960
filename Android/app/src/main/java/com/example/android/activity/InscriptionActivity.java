@@ -24,8 +24,8 @@ public class InscriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
-        Button seConnecter = findViewById(R.id.inscriptionSeConnecter);
-        seConnecter.setOnClickListener(new View.OnClickListener() {
+        Button signUp = findViewById(R.id.inscriptionSignUp);
+        signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onInscription();
