@@ -11,7 +11,7 @@ const Educ_cours = function(educ_cours) {
 };
 
 
-Educ_cours.getCours = (iduser, age, search, idcategorie, result) => {
+Educ_cours.getCours = (iduser, age, search, idcategorie, etat, result) => {
 
     let query = "select * from (select ec.*, 0 as etatcoursuser from("+
         " select ec.* from educ_cours ec where ec.agemin < '"+age+"' and ec.agemax > '"+age+"'"+
@@ -27,6 +27,9 @@ Educ_cours.getCours = (iduser, age, search, idcategorie, result) => {
     }
     if (idcategorie) {
         query += ` and idcategorie LIKE '${idcategorie}'`;
+    }
+    if (etat) {
+        query += ` and etatcoursuser LIKE '${etat}'`;
     }
     sql.query(query, (err, res) => {
       if (err) {
