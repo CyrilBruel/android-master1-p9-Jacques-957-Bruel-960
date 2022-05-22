@@ -9,17 +9,19 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.android.R;
-import com.example.android.activity.CoursActivity;
+import com.example.android.activity.DetailCoursActivity;
 import com.example.android.activity.ListCoursActivity;
+import com.example.android.classes.Cours;
 import com.example.android.classes.Theme;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ThemeAdapter extends BaseAdapter {
+public class ListCoursAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Theme> arrayList;
-    private TextView serialNum, name, contactNum;
-    public ThemeAdapter(Context context, ArrayList<Theme> arrayList) {
+    private ArrayList<Cours> arrayList;
+    private TextView listCoursDesce;
+    public ListCoursAdapter(Context context, ArrayList<Cours> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
@@ -37,17 +39,14 @@ public class ThemeAdapter extends BaseAdapter {
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = LayoutInflater.from(context).inflate(R.layout.row_theme, parent, false);
-        serialNum = convertView.findViewById(R.id.serailNumber);
-        name = convertView.findViewById(R.id.studentName);
-        contactNum = convertView.findViewById(R.id.mobileNum);
-        serialNum.setText("" + arrayList.get(position).getId());
-        name.setText(arrayList.get(position).getDesce());
-        name.setOnClickListener(new View.OnClickListener() {
+        convertView = LayoutInflater.from(context).inflate(R.layout.row_list_cours, parent, false);
+        listCoursDesce = convertView.findViewById(R.id.listCoursDesce);
+        listCoursDesce.setText(arrayList.get(position).getDesce());
+        listCoursDesce.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ListCoursActivity.class);
-                intent.putExtra("idcategorie",arrayList.get(position).getId());
+                Intent intent = new Intent(view.getContext(), DetailCoursActivity.class);
+                intent.putExtra("idcours",arrayList.get(position).getId());
                 view.getContext().startActivity(intent);
             }
         });

@@ -6,17 +6,15 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.example.android.R;
-import com.example.android.adapters.CoursAdapter;
-import com.example.android.adapters.ThemeAdapter;
+import com.example.android.adapters.DetailCoursAdapter;
 import com.example.android.classes.Cours;
-import com.example.android.classes.Theme;
 
 import java.util.ArrayList;
 
 public class CoursActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<Cours> arrayList = new ArrayList<>();
-    CoursAdapter adapter;
+    DetailCoursAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +30,7 @@ public class CoursActivity extends AppCompatActivity {
                 "</iframe></body></html>";
         cours.setDesce(videoStr);
         arrayList.add(cours);
-        adapter = new CoursAdapter(this, arrayList);
-        listView.setAdapter(adapter);
+        //adapter = new Co(this, arrayList);
+        //listView.setAdapter(adapter);
     }
 }

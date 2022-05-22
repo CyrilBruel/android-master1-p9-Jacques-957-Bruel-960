@@ -65,8 +65,7 @@ public class CategorieFragment extends Fragment {
             @Override
             public void onResponse(Call<ResGetCategorie> call, Response<ResGetCategorie> response) {
                 ResGetCategorie resCategorie = response.body();
-                System.out.println("hello "+resCategorie.getStatus());
-                 if(resCategorie.getStatus()==200){
+                  if(resCategorie.getStatus()==200){
                      arrayList = resCategorie.getListTheme();
                      adapter = new ThemeAdapter(getContext(), arrayList);
                      listView.setAdapter(adapter);
@@ -79,8 +78,6 @@ public class CategorieFragment extends Fragment {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
-
     }
 
 }

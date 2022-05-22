@@ -9,6 +9,15 @@ public class Cours {
     int ageMin;
     int ageMax;
     String idCategorie;
+    int etatcoursuser;
+
+    public int getEtatcoursuser() {
+        return etatcoursuser;
+    }
+
+    public void setEtatcoursuser(int etatcoursuser) {
+        this.etatcoursuser = etatcoursuser;
+    }
 
     public String getId() {
         return id;

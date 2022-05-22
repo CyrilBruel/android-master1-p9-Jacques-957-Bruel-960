@@ -12,15 +12,16 @@ import android.widget.TextView;
 
 import com.example.android.R;
 import com.example.android.classes.Cours;
+import com.example.android.classes.DetailCours;
 import com.example.android.classes.Theme;
 
 import java.util.ArrayList;
 
-public class CoursAdapter extends BaseAdapter {
+public class DetailCoursAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Cours> arrayList;
+    private ArrayList<DetailCours> arrayList;
     private WebView webView;
-    public CoursAdapter(Context context, ArrayList<Cours> arrayList) {
+    public DetailCoursAdapter(Context context, ArrayList<DetailCours> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
@@ -40,10 +41,6 @@ public class CoursAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(R.layout.row_cours, parent, false);
         webView = convertView.findViewById(R.id.webView);
-
-        //build your own src link with your video ID
-        String videoStr = "<html><body>Promo video<br><iframe width=\"auto\" height=\"suto\" src=\"https://www.youtube.com/embed/47yJ2XCRLZs\" frameborder=\"0\" allowfullscreen></iframe></body></html>";
-
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -52,7 +49,8 @@ public class CoursAdapter extends BaseAdapter {
         });
         WebSettings ws = webView.getSettings();
         ws.setJavaScriptEnabled(true);
-        webView.loadData(arrayList.get(position).getDesce(), "text/html", "utf-8");
+        System.out.println("gogo"+arrayList.get(position).getContent());
+        webView.loadData(arrayList.get(position).getContent(), "text/html", "utf-8");
 
         return convertView;
     }

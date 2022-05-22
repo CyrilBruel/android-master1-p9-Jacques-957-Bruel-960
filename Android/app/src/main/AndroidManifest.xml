@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Android"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.DetailCoursActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.ListCoursActivity"
             android:exported="true" />
         <activity
