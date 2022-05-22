@@ -2,17 +2,16 @@ package com.example.android.classes;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ResInscription {
-    @SerializedName("status")
-    String status;
+public class ResInscription extends Res{
+
     @SerializedName("data")
     User user;
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

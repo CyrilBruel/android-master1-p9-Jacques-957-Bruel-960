@@ -12,7 +12,7 @@ public class User implements Serializable {
     @SerializedName("prenom")
     String prenom;
     @SerializedName("age")
-    String age;
+    int age;
     @SerializedName("sexe")
     String sexe;
     @SerializedName("username")
@@ -54,11 +54,11 @@ public class User implements Serializable {
         this.prenom = prenom;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

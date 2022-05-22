@@ -1,26 +1,23 @@
-package com.example.android;
+package com.example.android.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ListView;
 
-import com.example.android.activity.LoginActivity;
+import com.example.android.R;
 import com.example.android.adapters.ThemeAdapter;
 import com.example.android.classes.Theme;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class ThemeActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<Theme> arrayList = new ArrayList<>();
     ThemeAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_theme);
         listView = findViewById(R.id.listView);
         arrayList.add(new Theme(1, "Anglais","987576443"));
         arrayList.add(new Theme(2, "Francais","8787576768"));
@@ -42,7 +39,4 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    public void onLogin(View view) {
-        startActivity(new Intent(MainActivity.this, LoginActivity.class));
-    }
 }

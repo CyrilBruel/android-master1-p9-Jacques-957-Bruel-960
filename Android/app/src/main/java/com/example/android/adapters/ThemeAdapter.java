@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.android.R;
 import com.example.android.activity.CoursActivity;
+import com.example.android.activity.ListCoursActivity;
 import com.example.android.classes.Theme;
 
 import java.util.ArrayList;
@@ -40,13 +41,12 @@ public class ThemeAdapter extends BaseAdapter {
         serialNum = convertView.findViewById(R.id.serailNumber);
         name = convertView.findViewById(R.id.studentName);
         contactNum = convertView.findViewById(R.id.mobileNum);
-        serialNum.setText(" " + arrayList.get(position).getId());
-        name.setText(arrayList.get(position).getVal());
-        contactNum.setText(arrayList.get(position).getDesce());
+        serialNum.setText("" + arrayList.get(position).getId());
+        name.setText(arrayList.get(position).getDesce());
         name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), CoursActivity.class);
+                Intent intent = new Intent(view.getContext(), ListCoursActivity.class);
                 view.getContext().startActivity(intent);
             }
         });

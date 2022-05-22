@@ -6,12 +6,18 @@
 
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Android">
+        android:theme="@style/Theme.Android"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activity.ListCoursActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.CategorieActivity"
+            android:exported="true" />
         <activity
             android:name=".activity.InscriptionActivity"
             android:exported="true" />
@@ -19,10 +25,10 @@
             android:name=".activity.CoursActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.ThemeActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

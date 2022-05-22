@@ -2,11 +2,11 @@ package com.example.android.classes;
 
 public class Theme {
     private int id;
-    private String val;
+    private String icone;
     private String desce;
-    public Theme(int num, String val, String desce) {
+    public Theme(int num, String icone, String desce) {
         this.id = num;
-        this.val = val;
+        this.icone = icone;
         this.desce = desce;
     }
     public int getId() {
@@ -15,11 +15,11 @@ public class Theme {
     public void setId(int num) {
         this.id = num;
     }
-    public String getVal() {
-        return val;
+    public String getIcone() {
+        return icone;
     }
-    public void setVal(String val) {
-        this.val = val;
+    public void setIcone(String icone) {
+        this.icone = icone;
     }
     public String getDesce() {
         return desce;

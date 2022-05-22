@@ -46,7 +46,7 @@ public class InscriptionActivity extends AppCompatActivity {
         }else{
             user.setSexe("m");
         }
-        user.setAge(age.getText().toString());
+        user.setAge(Integer.parseInt(age.getText().toString()));
         user.setMotdepasse(motdepasse.getText().toString());
         user.setNom(nom.getText().toString());
         user.setPrenom(prenom.getText().toString());

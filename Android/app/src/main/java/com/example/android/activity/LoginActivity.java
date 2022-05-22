@@ -3,6 +3,7 @@ package com.example.android.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -51,17 +52,25 @@ public class LoginActivity extends AppCompatActivity {
         user.setMotdepasse(motdepasse.getText().toString());
         user.setPseudo(pseudo.getText().toString());
 
-        Call<ResInscription> call = RetrofitClient.getInstance().getMyApi().inscription(user);
+        Call<ResInscription> call = RetrofitClient.getInstance().getMyApi().login(user);
         call.enqueue(new Callback<ResInscription>() {
             @Override
             public void onResponse(Call<ResInscription> call, Response<ResInscription> response) {
-                ResInscription myheroList = response.body();
-                Toast.makeText(getApplicationContext(), "Success"+myheroList.getStatus(), Toast.LENGTH_LONG).show();
+                ResInscription inscription = response.body();
+                SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
+                if(inscription.getStatus()==200){
+                    preferences.edit().putString("id", inscription.getUser().getId()).commit();
+                    preferences.edit().putInt("age", inscription.getUser().getAge()).commit();
+                    Intent intent = new Intent(LoginActivity.this, CategorieActivity.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(), inscription.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
             }
             @Override
             public void onFailure(Call<ResInscription> call, Throwable t) {
-                t.printStackTrace();
-                Toast.makeText(getApplicationContext(), "An error has occured", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

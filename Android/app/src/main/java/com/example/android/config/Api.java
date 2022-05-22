@@ -1,5 +1,6 @@
 package com.example.android.config;
 
+import com.example.android.classes.ResGetCategorie;
 import com.example.android.classes.ResInscription;
 import com.example.android.classes.User;
 
@@ -11,9 +12,11 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface Api {
-    String BASE_URL = "http://192.168.88.35:3000/";
+    String BASE_URL = "http://192.168.88.16:3000/";
     @POST("api/user")
     Call<ResInscription> inscription(@Body User dataModal);
     @POST("api/user/login")
     Call<ResInscription> login(@Body User dataModal);
+    @GET("api/categorie")
+    Call<ResGetCategorie> getCategories();
 }
