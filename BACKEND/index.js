@@ -31,6 +31,10 @@ app.get('/', function (req, res){
     res.json({message: 'Welcome to edukids'});
 });
 require("./routes/user.routes")(app);
+require("./routes/educ_categorie.route")(app);
+require("./routes/educ_cours.route")(app);
+require("./routes/educ_coursfille_lib.route")(app);
+// require("./routes/educ_etatcours_user.route")(app);
 const port = process.env.PORT || 3000;
 app.listen(port, function (){
     console.log(`Listening on port ${port}`);

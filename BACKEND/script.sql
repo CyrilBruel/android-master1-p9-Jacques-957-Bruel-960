@@ -31,7 +31,7 @@ create table educ_cours(
     constraint educ_cours_categ_fk foreign key (idcategorie) references educ_categorie(id)
 );
 
-create table educ_cours_fille(
+create table educ_coursfille(
     id integer not null,
     desce varchar(200),
     content text,
@@ -40,3 +40,17 @@ create table educ_cours_fille(
     constraint educ_coursfilletype_fk foreign key (idtypecoursfille) references educ_typecoursfille(id)
     constraint educ_fillescours_fk foreign key (idcours) references educ_cours(id)
 );
+
+create table educ_etatcours_user(
+    id integer not null primary key,
+    idcours integer not null,
+    isuser integer not null
+);
+
+
+create or replace view educ_coursfille_lib as
+select ecf.*, ec.desce as coursdescription, ec.datepublication, ec.agemin, ec.agemax, ec.idcategorie, ect.desce as categoriedescription from educ_coursfille as ecf 
+    JOIN educ_cours ec on ecf.idcours = ec.id
+    JOIN educ_categorie ect on ec.idcategorie = ect.id
+    --LEFT JOIN educ_etatcours_user eeu on eeu.idcours
+    ;
