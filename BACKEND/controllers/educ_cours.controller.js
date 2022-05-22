@@ -12,6 +12,11 @@ exports.getCours = (req, res) => {
           message:
             err.message || "Some error occurred while retrieving Cours ."
         });
-      else res.send(data);
+      else 
+        res.status(200).send({
+            message: 'Succès',
+            status:200,
+            data:data
+        });
     });
 };

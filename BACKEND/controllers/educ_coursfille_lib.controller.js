@@ -21,7 +21,11 @@ exports.findDetailsCoursByIdCours = (req, res) => {
                 console.log(data2);
             }
         });
-        res.send(data1);
+        res.status(200).send({
+            message: 'Succès',
+            status:200,
+            data:data1
+        });
       } 
     });
 };
