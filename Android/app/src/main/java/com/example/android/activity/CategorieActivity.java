@@ -2,6 +2,7 @@ package com.example.android.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,12 +34,13 @@ public class CategorieActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.one:
+            case R.id.menuAccueil:
                 // do something
                 return true;
 
-            case R.id.two:
-                //do something
+            case R.id.menuPreference:
+                Intent intent = new Intent(this, UserActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -33,11 +33,11 @@ public class ListCoursActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.one:
+            case R.id.menuAccueil:
                 // do something
                 return true;
 
-            case R.id.two:
+            case R.id.menuPreference:
                 //do something
                 return true;
             default:

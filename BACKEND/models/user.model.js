@@ -90,8 +90,8 @@ User.getAllActive = result => {
 
 User.updateById = (id, user, result) => {
   sql.query(
-    "UPDATE educ_user SET nom = ?, prenom = ?, username = ?, password = ?, age= ? WHERE id = ?",
-    [ user.nom, user.prenom, user.username, user.password, user.age, id],
+    "UPDATE educ_user SET nom = ?, prenom = ?, username = ?, mot_de_passe = ?, age= ? WHERE id = ?",
+    [ user.nom, user.prenom, user.username, user.mot_de_passe, user.age, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
