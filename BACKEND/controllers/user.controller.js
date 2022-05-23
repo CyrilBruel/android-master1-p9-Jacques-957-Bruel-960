@@ -131,10 +131,12 @@ exports.update = (req, res) => {
 
   console.log(req.body);
 
-  User.updateById(
-    req.params.id,
-    new User(req.body),
-    (err, data) => {
+  const str = JSON.stringify(req.body.mot_de_passe); 
+  const hash = crypto.createHash('sha1').update(str).digest('hex')
+  var user = new User(req.body);
+  user.mot_de_passe = hash;
+
+  User.updateById(req.params.id, user, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({

@@ -14,12 +14,10 @@ exports.findDetailsCoursByIdCours = (req, res) => {
           });
         }
       } else{
-        Educ_etatcours_user.insertEtatCoursUser(req.params.iduser, req.params.idcours, (err, data2) => {
-            if(err){
-                console.log(err);
-            } else {
-                console.log(data2);
-            }
+        Educ_etatcours_user.insertEtatCoursUser(req.params.iduser, req.params.idcours, (err) => {
+          if(err){
+            console.log(err);
+          }
         });
         res.status(200).send({
             message: 'Succès',

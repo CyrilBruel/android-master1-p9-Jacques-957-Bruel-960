@@ -1,4 +1,5 @@
 const sql = require("./db.js");
+const crypto = require('crypto')
 
 // constructor
 const User = function(user) {

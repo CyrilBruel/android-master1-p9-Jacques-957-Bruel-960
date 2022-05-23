@@ -12,13 +12,8 @@ Educ_etatcours_user.insertEtatCoursUser = (iduser, idcours, result) => {
     sql.query(requete, (err, res) => {
       if (err) {
         console.log("error: ", err);
-        result(err, null);
-        return;
+        result(err);
       }
-      result(null, { id: res.insertId,
-        iduser: iduser,
-        idcours: idcours,
-      });
     });
 };
 
