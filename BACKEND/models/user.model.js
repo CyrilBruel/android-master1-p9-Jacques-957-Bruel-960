@@ -90,8 +90,8 @@ User.getAllActive = result => {
 
 User.updateById = (id, user, result) => {
   sql.query(
-    "UPDATE educ_user SET username = ?, password = ? WHERE id = ?",
-    [ user.username, user.password, id],
+    "UPDATE educ_user SET nom = ?, prenom = ?, username = ?, password = ?, age= ? WHERE id = ?",
+    [ user.nom, user.prenom, user.username, user.password, user.age, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -106,7 +106,15 @@ User.updateById = (id, user, result) => {
       }
 
       console.log("updated educ_user: ", { id: id, ...user });
-      result(null, { id: id, ...user });
+      result(null, { id: user.id,
+        nom  : user.nom,
+        prenom : user.prenom,
+        age : user.age,
+        sexe : user.sexe,
+        username : user.username,
+        // mot_de_passe : newUser.mot_de_passe,
+        profil : user.profil
+      });
     }
   );
 };

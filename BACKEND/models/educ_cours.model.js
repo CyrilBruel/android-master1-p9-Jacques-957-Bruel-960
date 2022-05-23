@@ -21,9 +21,11 @@ Educ_cours.getCours = (iduser, age, search, idcategorie, etat, result) => {
     " )"+
     " UNION ALL"+
     " select ec.*, 1 from educ_etatcours_user eeu"+
-        " JOIN educ_cours ec on ec.id = eeu.idcours where eeu.iduser like '"+iduser+"') info_cours ";
+        " JOIN educ_cours ec on ec.id = eeu.idcours where eeu.iduser like '"+iduser+"') info_cours where 1<2 ";
+    
+    
     if (search) {
-        query += ` where desce LIKE '%${search}%' `;
+        query += ` and desce LIKE '%${search}%' `;
     }
     if (idcategorie) {
         query += ` and idcategorie LIKE '${idcategorie}'`;
