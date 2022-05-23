@@ -36,7 +36,8 @@ public class CategorieActivity extends AppCompatActivity {
         Intent intent = null;
         switch (item.getItemId()) {
             case R.id.menuAccueil:
-                // do something
+                intent = new Intent(this, ThemeActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.menuPreference:
                 intent = new Intent(this, UserActivity.class);

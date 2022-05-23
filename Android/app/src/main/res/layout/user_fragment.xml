@@ -9,37 +9,131 @@
     tools:context=".activity.UserActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="405dp"
+        android:layout_height="400dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498">
 
         <EditText
             android:id="@+id/userAge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="numberSigned"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="46dp" />
+            app:layout_constraintStart_toStartOf="@+id/userPrenom"
+            app:layout_constraintTop_toBottomOf="@+id/userPrenom" />
 
         <Button
             android:id="@+id/userUpdate"
             android:layout_width="208dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="Mettre à jour"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.532"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userPseudo" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age"
+            android:textColor="@color/white"
+            app:layout_constraintBaseline_toBaselineOf="@+id/userAge"
+            app:layout_constraintStart_toStartOf="@+id/textView15" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom"
+            android:textColor="@color/white"
+            app:layout_constraintBaseline_toBaselineOf="@+id/userNom"
+            app:layout_constraintEnd_toStartOf="@+id/userNom"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/userNom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView11"
+            tools:layout_editor_absoluteY="31dp" />
+
+        <EditText
+            android:id="@+id/userPrenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/userNom"
+            app:layout_constraintTop_toBottomOf="@+id/userNom" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prénom"
+            android:textColor="@color/white"
+            app:layout_constraintBaseline_toBaselineOf="@+id/userPrenom"
+            app:layout_constraintStart_toStartOf="@+id/textView11" />
+
+        <EditText
+            android:id="@+id/userMotDePasse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/userAge"
             app:layout_constraintTop_toBottomOf="@+id/userAge" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mot de passe"
+            android:textColor="@color/white"
+            app:layout_constraintBaseline_toBaselineOf="@+id/userMotDePasse"
+            app:layout_constraintStart_toStartOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pseudo"
+            android:textColor="@color/white"
+            app:layout_constraintBaseline_toBaselineOf="@+id/userPseudo"
+            app:layout_constraintStart_toStartOf="@+id/textView14" />
+
+        <EditText
+            android:id="@+id/userPseudo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/userMotDePasse"
+            app:layout_constraintTop_toBottomOf="@+id/userMotDePasse" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

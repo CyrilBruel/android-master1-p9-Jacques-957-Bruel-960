@@ -32,7 +32,7 @@ import retrofit2.http.Path;
 public class UserFragment extends Fragment {
     public User user;
     private UserViewModel mViewModel;
-    public EditText userAge;
+    public EditText userAge,userNom,userPrenom,userMotDePasse,userPseudo;
     public static UserFragment newInstance() {
         return new UserFragment();
     }
@@ -44,6 +44,10 @@ public class UserFragment extends Fragment {
         getUser();
         View view = inflater.inflate(R.layout.user_fragment, container, false);
         userAge = view.findViewById(R.id.userAge);
+        userNom = view.findViewById(R.id.userNom);
+        userPrenom = view.findViewById(R.id.userPrenom);
+        userMotDePasse = view.findViewById(R.id.userMotDePasse);
+        userPseudo  = view.findViewById(R.id.userPseudo);
         Button confirm = view.findViewById(R.id.userUpdate);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +73,10 @@ public class UserFragment extends Fragment {
                 user = response.body();
                 if(user!=null){
                     userAge.setText(String.valueOf(user.getAge()));
+                    userNom.setText(String.valueOf(user.getNom()));
+                    userPrenom.setText(String.valueOf(user.getPrenom()));
+                    userMotDePasse.setText(String.valueOf(user.getMotdepasse()));
+                    userPseudo.setText(String.valueOf(user.getPseudo()));
                 }else{
                     Toast.makeText(getContext(), "Erreur du serveur", Toast.LENGTH_LONG).show();
                 }
@@ -81,16 +89,17 @@ public class UserFragment extends Fragment {
     }
     public void onUpdate(){
         user.setAge(Integer.parseInt(userAge.getText().toString()));
-        user.setMotdepasse("1234");
-        System.out.println("------"+user.getId());
+        user.setMotdepasse(userMotDePasse.getText().toString());
+        user.setPseudo(userPseudo.getText().toString());
+        user.setMotdepasse(userNom.getText().toString());
+        user.setMotdepasse(userPrenom.getText().toString());
         Call<User> call = RetrofitClient.getInstance().getMyApi().putUser(String.valueOf(user.getId()),user);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 user = response.body();
                 if(user!=null){
-                    System.out.println("------"+user.getAge());
-                    Toast.makeText(getContext(), "Mise à jour effectutée", Toast.LENGTH_LONG).show();
+                     Toast.makeText(getContext(), "Mise à jour effectutée", Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(getContext(), "Erreur du serveur", Toast.LENGTH_LONG).show();
                 }

@@ -34,24 +34,22 @@ public class ListCoursActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
+        Intent intent = null;
         switch (item.getItemId()) {
             case R.id.menuAccueil:
-                // do something
+                intent = new Intent(this, ThemeActivity.class);
+                startActivity(intent);
                 return true;
-
             case R.id.menuPreference:
-                //do something
+                intent = new Intent(this, UserActivity.class);
+                startActivity(intent);
                 return true;
-
             case R.id.menuCours:
-                //Intent intent = new Intent(this, LoginActivity.class);
-                System.out.println("coucou");
-                finish();
-                //startActivity(intent);
+                intent = new Intent(this, CoursUserActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }

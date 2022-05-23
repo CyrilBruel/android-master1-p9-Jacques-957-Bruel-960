@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -35,6 +37,8 @@ public class ListCoursFragment extends Fragment {
     public int idcategorie;
     ArrayList<Cours> arrayList = new ArrayList<>();
     ListCoursAdapter adapter;
+    EditText listCoursTexte;
+    Button listCoursChercher;
     public static ListCoursFragment newInstance() {
         return new ListCoursFragment();
     }
@@ -45,7 +49,15 @@ public class ListCoursFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.list_cours_fragment, container, false);
         listView = view.findViewById(R.id.listView);
+        listCoursTexte = view.findViewById(R.id.listCoursTexte);
+        listCoursChercher = view.findViewById(R.id.listCoursChercher);
         idcategorie = getActivity().getIntent().getExtras().getInt("idcategorie");
+        listCoursChercher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chercher();
+            }
+        });
         getListCours();
         return view;
     }
@@ -62,6 +74,31 @@ public class ListCoursFragment extends Fragment {
         bodyListCours.setAge(preferences.getInt("age",-1));
         bodyListCours.setIdUser( preferences.getString("id",""));
         bodyListCours.setIdCategorie(idcategorie);
+        Call<ResListCours> call = RetrofitClient.getInstance().getMyApi().listCours(bodyListCours);
+        call.enqueue(new Callback<ResListCours>() {
+            @Override
+            public void onResponse(Call<ResListCours> call, Response<ResListCours> response) {
+                ResListCours resListCours = response.body();
+                if(resListCours.getStatus()==200){
+                    arrayList = resListCours.getListCours();
+                    adapter = new ListCoursAdapter(getContext(), arrayList);
+                    listView.setAdapter(adapter);
+                }else{
+                    Toast.makeText(getContext(), resListCours.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<ResListCours> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+    public void chercher(){
+        BodyListCours bodyListCours = new BodyListCours();
+        SharedPreferences preferences = getContext().getSharedPreferences("user", 0);
+        bodyListCours.setAge(preferences.getInt("age",-1));
+        bodyListCours.setIdUser( preferences.getString("id",""));
+        bodyListCours.setSearch(listCoursTexte.getText().toString());
         Call<ResListCours> call = RetrofitClient.getInstance().getMyApi().listCours(bodyListCours);
         call.enqueue(new Callback<ResListCours>() {
             @Override
