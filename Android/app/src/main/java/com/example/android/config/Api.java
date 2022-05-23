@@ -19,7 +19,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface Api {
-    String BASE_URL = "http://26.123.19.126:3000/";
+    String BASE_URL = "https://android-backend-957-960-p9m1.herokuapp.com/";
     @POST("api/user")
     Call<ResInscription> inscription(@Body User dataModal);
     @POST("api/user/login")
