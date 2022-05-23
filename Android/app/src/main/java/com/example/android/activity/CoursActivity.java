@@ -60,6 +60,11 @@ public class CoursActivity extends AppCompatActivity {
                 intent = new Intent(this, CoursUserActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.menuLogOut:
+                intent = new Intent(this, LoginActivity.class);
+                this.finish();
+                startActivity(intent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

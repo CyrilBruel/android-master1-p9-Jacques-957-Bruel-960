@@ -40,7 +40,6 @@ public class ThemeAdapter extends BaseAdapter {
         convertView = LayoutInflater.from(context).inflate(R.layout.row_theme, parent, false);
         serialNum = convertView.findViewById(R.id.serailNumber);
         name = convertView.findViewById(R.id.studentName);
-        contactNum = convertView.findViewById(R.id.mobileNum);
         serialNum.setText("" + arrayList.get(position).getId());
         name.setText(arrayList.get(position).getDesce());
         name.setOnClickListener(new View.OnClickListener() {

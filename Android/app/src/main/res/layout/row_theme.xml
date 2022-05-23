@@ -37,16 +37,6 @@
                     app:layout_constraintBaseline_toBaselineOf="@+id/serailNumber"
                     app:layout_constraintStart_toEndOf="@+id/serailNumber" />
 
-                <TextView
-                    android:id="@+id/mobileNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:text="Mobile Number"
-                    android:textColor="#206090"
-                    android:textSize="16sp"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/studentName"
-                    app:layout_constraintStart_toEndOf="@+id/studentName" />
         </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

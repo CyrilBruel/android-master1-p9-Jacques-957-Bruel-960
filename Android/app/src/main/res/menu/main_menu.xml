@@ -8,4 +8,6 @@
         android:title="Mes cours"/>
     <item android:id="@+id/menuPreference"
         android:title="Préférence"/>
+    <item android:id="@+id/menuLogOut"
+        android:title="Se déconnecter"/>
 </menu>

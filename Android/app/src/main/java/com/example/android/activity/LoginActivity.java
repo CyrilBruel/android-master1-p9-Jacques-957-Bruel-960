@@ -56,10 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User();
         EditText motdepasse = findViewById(R.id.loginMotDePasse);
         EditText pseudo = findViewById(R.id.loginPseudo);
-        //user.setMotdepasse(motdepasse.getText().toString());
-        //user.setPseudo(pseudo.getText().toString());
-        user.setMotdepasse("1234");
-        user.setPseudo("jacob");
+        user.setMotdepasse(motdepasse.getText().toString());
+        user.setPseudo(pseudo.getText().toString());
 
         Call<ResInscription> call = RetrofitClient.getInstance().getMyApi().login(user);
         call.enqueue(new Callback<ResInscription>() {
