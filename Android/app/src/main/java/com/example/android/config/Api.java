@@ -1,5 +1,6 @@
 package com.example.android.config;
 
+import com.example.android.classes.BodyCoursUser;
 import com.example.android.classes.BodyListCours;
 import com.example.android.classes.ResDetailCours;
 import com.example.android.classes.ResGetCategorie;
@@ -27,6 +28,8 @@ public interface Api {
     Call<ResGetCategorie> getCategories();
     @POST("api/cours")
     Call<ResListCours> listCours(@Body BodyListCours dataModal);
+    @POST("api/cours")
+    Call<ResListCours> listCoursUser(@Body BodyCoursUser dataModal);
     @GET("/api/detailscours/{iduser}/{idcours}")
     Call<ResDetailCours> getCours(@Path("iduser") String iduser, @Path("idcours") String idCours);
     @GET("/api/user/{id}")

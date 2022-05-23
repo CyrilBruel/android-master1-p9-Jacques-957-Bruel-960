@@ -1,4 +1,4 @@
-package com.example.android.activity.ui.listcours;
+package com.example.android.activity.ui.coursuser;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -16,7 +16,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.android.R;
+import com.example.android.activity.ui.listcours.ListCoursViewModel;
 import com.example.android.adapters.ListCoursAdapter;
+import com.example.android.classes.BodyCoursUser;
 import com.example.android.classes.BodyListCours;
 import com.example.android.classes.Cours;
 import com.example.android.classes.ResListCours;
@@ -29,23 +31,22 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class ListCoursFragment extends Fragment {
+public class CoursUserFragment extends Fragment {
+
+    private CoursUserViewModel mViewModel;
     ListView listView;
-    private ListCoursViewModel mViewModel;
-    public int idcategorie;
     ArrayList<Cours> arrayList = new ArrayList<>();
     ListCoursAdapter adapter;
-    public static ListCoursFragment newInstance() {
-        return new ListCoursFragment();
+    public static CoursUserFragment newInstance() {
+        return new CoursUserFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.list_cours_fragment, container, false);
+        View view = inflater.inflate(R.layout.cours_user_fragment, container, false);
         listView = view.findViewById(R.id.listView);
-        idcategorie = getActivity().getIntent().getExtras().getInt("idcategorie");
         getListCours();
         return view;
     }
@@ -53,16 +54,15 @@ public class ListCoursFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ListCoursViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(CoursUserViewModel.class);
         // TODO: Use the ViewModel
     }
     public void getListCours(){
-        BodyListCours bodyListCours = new BodyListCours();
+        BodyCoursUser bodyListCours = new BodyCoursUser();
         SharedPreferences preferences = getContext().getSharedPreferences("user", 0);
         bodyListCours.setAge(preferences.getInt("age",-1));
         bodyListCours.setIdUser( preferences.getString("id",""));
-        bodyListCours.setIdCategorie(idcategorie);
-        Call<ResListCours> call = RetrofitClient.getInstance().getMyApi().listCours(bodyListCours);
+        Call<ResListCours> call = RetrofitClient.getInstance().getMyApi().listCoursUser(bodyListCours);
         call.enqueue(new Callback<ResListCours>() {
             @Override
             public void onResponse(Call<ResListCours> call, Response<ResListCours> response) {
@@ -81,5 +81,4 @@ public class ListCoursFragment extends Fragment {
             }
         });
     }
-
 }

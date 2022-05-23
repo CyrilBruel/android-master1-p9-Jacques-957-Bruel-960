@@ -49,7 +49,7 @@ public class DetailCoursAdapter extends BaseAdapter {
         });
         WebSettings ws = webView.getSettings();
         ws.setJavaScriptEnabled(true);
-        System.out.println("gogo"+arrayList.get(position).getContent());
+        System.out.println("gogo"+arrayList.get(position).getDesce());
         webView.loadData(arrayList.get(position).getContent(), "text/html", "utf-8");
 
         return convertView;

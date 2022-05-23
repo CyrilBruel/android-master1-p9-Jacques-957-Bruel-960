@@ -1,9 +1,14 @@
 package com.example.android.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,7 +33,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
         Button inscription = findViewById(R.id.loginInscription);
         inscription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,8 +56,10 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User();
         EditText motdepasse = findViewById(R.id.loginMotDePasse);
         EditText pseudo = findViewById(R.id.loginPseudo);
-        user.setMotdepasse(motdepasse.getText().toString());
-        user.setPseudo(pseudo.getText().toString());
+        //user.setMotdepasse(motdepasse.getText().toString());
+        //user.setPseudo(pseudo.getText().toString());
+        user.setMotdepasse("1234");
+        user.setPseudo("jacob");
 
         Call<ResInscription> call = RetrofitClient.getInstance().getMyApi().login(user);
         call.enqueue(new Callback<ResInscription>() {
@@ -59,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                 ResInscription inscription = response.body();
                 SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
                 if(inscription.getStatus()==200){
+                    notifier();
                     preferences.edit().putString("id", inscription.getUser().getId()).commit();
                     preferences.edit().putInt("age", inscription.getUser().getAge()).commit();
                     Intent intent = new Intent(LoginActivity.this, CategorieActivity.class);
@@ -74,26 +84,22 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-        return true;
-    }
+    public void notifier(){
+        //notification
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setSmallIcon(android.R.drawable.ic_dialog_alert);
+        Intent intent = new Intent(this, CoursUserActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        builder.setContentIntent(pendingIntent);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_education));
+        builder.setContentTitle("Edukids");
+        builder.setContentText("Nous avons des cours spécialement pour vous.");
+        builder.setSubText("Les cours sont organisés par catégorie...");
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.one:
-                // do something
-                return true;
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
-            case R.id.two:
-                //do something
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        // Will display the notification in the notification bar
+        notificationManager.notify(1, builder.build());
+        //Fin notification
     }
 }

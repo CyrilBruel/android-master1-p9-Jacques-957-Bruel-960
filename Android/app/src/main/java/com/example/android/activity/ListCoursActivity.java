@@ -2,16 +2,18 @@ package com.example.android.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.android.R;
 import com.example.android.activity.ui.listcours.ListCoursFragment;
 
 public class ListCoursActivity extends AppCompatActivity {
-
+    MenuItem menuCours;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +42,16 @@ public class ListCoursActivity extends AppCompatActivity {
             case R.id.menuPreference:
                 //do something
                 return true;
+
+            case R.id.menuCours:
+                //Intent intent = new Intent(this, LoginActivity.class);
+                System.out.println("coucou");
+                finish();
+                //startActivity(intent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

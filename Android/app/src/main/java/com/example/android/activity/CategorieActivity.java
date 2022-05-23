@@ -33,13 +33,17 @@ public class CategorieActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
+        Intent intent = null;
         switch (item.getItemId()) {
             case R.id.menuAccueil:
                 // do something
                 return true;
-
             case R.id.menuPreference:
-                Intent intent = new Intent(this, UserActivity.class);
+                intent = new Intent(this, UserActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.menuCours:
+                intent = new Intent(this, CoursUserActivity.class);
                 startActivity(intent);
                 return true;
             default:
